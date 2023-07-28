@@ -48,6 +48,15 @@ app.delete('/api/notes/:id', (req, res) => {
     });
 });
 
+function saveNotesToLocalStorage(notes) {
+    localStorage.setItem('notes', JSON.stringify(notes));
+}
+
+function getNotesFromLocalStorage() {
+    const notesString = localStorage.getItem('notes');
+    return JSON.parse(notesString) || [];
+}
+
 app.listen(port, () => {
     console.log(`App listening on PORT ${port}`);
 });
